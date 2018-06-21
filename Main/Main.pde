@@ -17,9 +17,16 @@ void draw(){
   //image(bkg_img, 0, 0);
   textSize(50);
   textAlign(CENTER);
-  text("NEURONAL NETWORK", width/2, 100);  
+  text("NEURONAL NETWORK", width/2, 100);
+  
+  //rectangle for display
   noFill();
+  stroke(0);
+  strokeWeight(1);
   rect(150, 150, size, size);
+  
+  //neural network display
+  fill(0);
   nw_net.draw();
   
   

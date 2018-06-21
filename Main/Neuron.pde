@@ -17,7 +17,7 @@ class Neuron{
     this.id = id + id_number;
     id_number = id_number ++;
     
-    println("neuron: " + id_number + " x: " + x + ", y: " + y);
+    //println("neuron: " + id_number + " x: " + x + ", y: " + y);
     
     for (int i=0; i< neurons_prev.size(); i++){
        new Neural_connection(this, neurons_prev.get(i));
@@ -26,6 +26,7 @@ class Neuron{
   }
   
   public void draw(){
+    fill(0);
     ellipseMode(CENTER);
     ellipse(x, y, size, size);
   }
