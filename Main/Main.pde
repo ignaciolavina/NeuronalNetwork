@@ -13,7 +13,11 @@ void setup(){
 
 
 void draw(){
+  fill(0);
   image(bkg_img, 0, 0);
+  textSize(50);
+  textAlign(CENTER);
+  text("NEURONAL NETWORK", width/2, 100);  
   noFill();
   rect(150, 150, size, size);
   nw_net.draw();
