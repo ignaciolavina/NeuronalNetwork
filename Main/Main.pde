@@ -6,7 +6,7 @@
 
 void setup(){
  size(800, 600); 
- nw_net = new NeuralNetwork(150, size, 2, 3, 2, 1);   
+ nw_net = new NeuralNetwork(150, size, 2, 4, 2, 1);   
  bkg_img = loadImage("assets/bkg_img.png");
   
 }
@@ -14,7 +14,7 @@ void setup(){
 
 void draw(){
   fill(0);
-  image(bkg_img, 0, 0);
+  //image(bkg_img, 0, 0);
   textSize(50);
   textAlign(CENTER);
   text("NEURONAL NETWORK", width/2, 100);  
