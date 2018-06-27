@@ -3,12 +3,14 @@ class Neural_connection{
   float weight;
   //int ponderation;
   Neuron neuron1, neuron2;
+  String id;
   
   public Neural_connection(Neuron neuron1, Neuron neuron2){
     this.neuron1 = neuron1;
     this.neuron2 = neuron2;
     this.weight = random(-1, 1);
-    
+    this.id = "Conn id: " + neuron1.id + "|" + neuron2.id;
+    println(id);
   }
   
   public void draw(){

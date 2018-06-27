@@ -54,15 +54,6 @@ class NeuralNetwork{
     }
     
     //CONEXIONS!
-    //Create conection first layer
-    for (int i = 0; i < neurons_init_layer; i++){
-      for(int j = 0; j < neurons_interm_layer; j++){
-       //añadir la conexion a la red general
-       list_conections.add(new Neural_connection(list_initial_layer[i], list_interm_layer[j][0])); 
-      }
-    }
-    
-    //Create conection matrix layer
     //FIRST LAYER
     for (int i = 0; i < neurons_interm_layer; i++){ // i = por cada fila de interm layer
       for(int k = 0; k < neurons_init_layer; k++){ //k = num neurons initial layer
