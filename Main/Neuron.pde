@@ -6,8 +6,13 @@ class Neuron{
   int y;
   int size = 20;
   
-  ArrayList <Neuron> neurons_prev = new ArrayList <Neuron> ();
-  ArrayList <Neuron> neurons_post = new ArrayList <Neuron> ();
+  float value = 0;
+  float sum;
+  
+  //ArrayList <Neuron> neurons_prev = new ArrayList <Neuron> ();
+  //ArrayList <Neuron> neurons_post = new ArrayList <Neuron> ();
+  
+  ArrayList <Neural_connection> list_connection_prev = new ArrayList <Neural_connection> ();
   
   //conexiones
   
@@ -19,9 +24,9 @@ class Neuron{
     
     //println("neuron: " + id_number + " x: " + x + ", y: " + y);
     
-    for (int i=0; i< neurons_prev.size(); i++){
+    /*for (int i=0; i< neurons_prev.size(); i++){
        new Neural_connection(this, neurons_prev.get(i));
-    }
+    }*/
     
   }
   
@@ -31,7 +36,20 @@ class Neuron{
     ellipse(x, y, size, size);
   }
   
+  public void add_connection(Neural_connection neu_con){
+    list_connection_prev.add(neu_con);    
+  }
   
+  //para las neuronas iniciales de la red
+  public void get_value(float value){
+    this.value = value;
+  }
   
+  //Para el resto, obtiene el valor en funcion de los pesos de las conexiones y el valor anterior
+  public void final_value(){    
+    for (int i = 0; i < list_connection_prev.size(); i++){
+      sum +=list_connection_prev.get(i).weight*list_connection_prev.get(i).neuron1.value;
+    }
+  }
   
 }

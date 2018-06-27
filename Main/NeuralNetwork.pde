@@ -7,7 +7,7 @@ class NeuralNetwork{
   ArrayList <Neural_connection> list_conections;
   //Neural_connection [] list_conections;
   
-  int size = 400; //for graphic representation
+  //int size = 400; //for graphic representation
   int y_space = 0;
   int x_space = 0;
   
@@ -51,6 +51,7 @@ class NeuralNetwork{
     //Create conection first layer
     for (int i = 0; i < neurons_init_layer; i++){
       for(int j = 0; j < neurons_interm_layer; j++){
+       //añadir la conexion a la red general
        list_conections.add(new Neural_connection(list_initial_layer[i], list_interm_layer[j][0])); 
       }
     }
@@ -59,7 +60,11 @@ class NeuralNetwork{
     for (int i = 0; i < neurons_interm_layer; i++){
       for(int j = 0; j < num_layers-1; j++){
         for(int k = 0; k < neurons_interm_layer; k++){
-           list_conections.add(new Neural_connection(list_interm_layer[i][j], list_interm_layer[k][j+1])); 
+            //añadir la conexion a la propia neurona
+            Neural_connection Neu_con = new Neural_connection(list_interm_layer[i][j], list_interm_layer[k][j+1]);
+            list_interm_layer[i][j].add_connection(Neu_con);
+            //añadir conexion a la red general
+            list_conections.add(Neu_con); 
         }
       }
     }
@@ -77,6 +82,27 @@ class NeuralNetwork{
   
   public void draw(){
     for(int i= 0; i< list_initial_layer.length; i++){
+      list_initial_layer[i].draw();       
+    }
+    
+    for(int i= 0; i< list_interm_layer.length; i++){
+      for(int j=0; j < list_interm_layer[0].length; j++){  
+        list_interm_layer[i][j].draw();
+      }
+    }
+    
+    for(int i = 0; i<list_final_layer.length; i++){
+       list_final_layer[i].draw();
+    }
+    
+    for (int i=0; i<list_conections.size(); i++){
+        list_conections.get(i).draw();
+    }
+    
+  }
+  
+  public void print_weights(){
+    for (int i = 0; i < list_initial_layer.length; i++){
       list_initial_layer[i].draw();       
     }
     
