@@ -64,7 +64,7 @@ class NeuralNetwork{
     
     //Create conection matrix layer
     for (int i = 0; i < neurons_interm_layer; i++){ // i = por cada fila de interm layer
-      for(int k = 1; k < neurons_init_layer; k++){ //k = num neurons initial layer
+      for(int k = 0; k < neurons_init_layer; k++){ //k = num neurons initial layer
          Neural_connection Neu_con = new Neural_connection(list_initial_layer[k], list_interm_layer[i][0]);
          list_interm_layer[i][0].add_connection(Neu_con);
          list_conections.add(Neu_con); 
@@ -97,7 +97,7 @@ class NeuralNetwork{
   public void set_initial_values(float [] init_values){
     for(int i= 0; i< list_initial_layer.length; i++){
       list_initial_layer[i].value = init_values[i];
-      println("valor inicial " + list_initial_layer[i].id + " ," + list_initial_layer[i].value);
+      //println("valor inicial " + list_initial_layer[i].id + " ," + list_initial_layer[i].value);
     }
   }
   
