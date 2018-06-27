@@ -1,12 +1,12 @@
 class Neuron{
   
 
-  String id = "N:";
+  String id; //falta completar todo esto
   int x;
   int y;
   int size = 20;
   
-  float value = 0;
+  float value;
   float sum;
   
   //ArrayList <Neuron> neurons_prev = new ArrayList <Neuron> ();
@@ -19,10 +19,10 @@ class Neuron{
   public Neuron(int x, int y){
     this.x = x;
     this.y = y;
-    this.id = id + id_number;
-    id_number = id_number ++;
-    
-    //println("neuron: " + id_number + " x: " + x + ", y: " + y);
+    //this.id = id + id_number;
+    //id_number = id_number ++;
+    set_id(id_number);
+    //println("neuron: " + id + " x: " + x + ", y: " + y);
     
     /*for (int i=0; i< neurons_prev.size(); i++){
        new Neural_connection(this, neurons_prev.get(i));
@@ -34,10 +34,11 @@ class Neuron{
     fill(0);
     ellipseMode(CENTER);
     ellipse(x, y, size, size);
+    //text(id, x, y);
   }
   
   public void add_connection(Neural_connection neu_con){
-    list_connection_prev.add(neu_con);    
+    list_connection_prev.add(neu_con);
   }
   
   //para las neuronas iniciales de la red
@@ -49,7 +50,15 @@ class Neuron{
   public void final_value(){    
     for (int i = 0; i < list_connection_prev.size(); i++){
       sum += list_connection_prev.get(i).weight*list_connection_prev.get(i).neuron1.value;
+      println("bucl3 " + list_connection_prev.get(i).weight + ", " +list_connection_prev.get(i).neuron1.value + " (id): " + list_connection_prev.get(i).neuron1.id );
     }
+    value = sum;
+    println("el valor de la neurona " + this.id + " es: " + value);
+  }
+  
+  public void set_id(int id){
+    this.id = "N: "+ id;
+    id_number ++;
   }
   
 }

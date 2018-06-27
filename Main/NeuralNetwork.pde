@@ -15,10 +15,12 @@ class NeuralNetwork{
   
   int neurons_interm_layer;
   int neurons_init_layer;
+  int num_layers;
   
   public NeuralNetwork(int initial_point, int size, int neurons_init_layer, int neurons_interm_layer, int num_layers, int neurons_final_layer){
     this.neurons_interm_layer = neurons_interm_layer;
     this.neurons_init_layer = neurons_init_layer;
+    this.num_layers = num_layers;
     
     list_initial_layer = new Neuron [neurons_init_layer];
     list_interm_layer = new Neuron [neurons_interm_layer][num_layers];
@@ -60,11 +62,12 @@ class NeuralNetwork{
     
     //Create conection matrix layer
     for (int i = 0; i < neurons_interm_layer; i++){
-      for(int j = 0; j < num_layers-1; j++){
+      for(int j = 1; j < num_layers; j++){
         for(int k = 0; k < neurons_interm_layer; k++){
             //añadir la conexion a la propia neurona
-            Neural_connection Neu_con = new Neural_connection(list_interm_layer[i][j], list_interm_layer[k][j+1]);
+            Neural_connection Neu_con = new Neural_connection(list_interm_layer[i][j-1], list_interm_layer[k][j]);
             list_interm_layer[i][j].add_connection(Neu_con);
+            //list_interm_layer[i][j].final_value();
             //añadir conexion a la red general
             list_conections.add(Neu_con); 
         }
@@ -76,12 +79,25 @@ class NeuralNetwork{
         for(int k = 0; k < neurons_final_layer; k++){
            list_conections.add(new Neural_connection(list_interm_layer[i][num_layers-1], list_final_layer[k])); 
         }      
-    }
-    
-    
-    
+    } 
   }
   
+  public void set_initial_values(float [] init_values){
+    for(int i= 0; i< list_initial_layer.length; i++){
+      list_initial_layer[i].value = init_values[i];
+      println("valor inicial " + list_initial_layer[i].id + " ," + list_initial_layer[i].value);
+    }
+  }
+  
+  public void get_values(){
+   for(int j = 0; j < num_layers; j++){
+    for (int i = 0; i < neurons_interm_layer; i++){
+            list_interm_layer[i][j].final_value();
+        }
+      }
+  }
+  
+  // DRAW FUNCTION
   public void draw(){
     for(int i= 0; i< list_initial_layer.length; i++){
       list_initial_layer[i].draw();       
