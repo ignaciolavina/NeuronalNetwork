@@ -48,7 +48,7 @@ class Neuron{
   //Para el resto, obtiene el valor en funcion de los pesos de las conexiones y el valor anterior
   public void final_value(){    
     for (int i = 0; i < list_connection_prev.size(); i++){
-      sum +=list_connection_prev.get(i).weight*list_connection_prev.get(i).neuron1.value;
+      sum += list_connection_prev.get(i).weight*list_connection_prev.get(i).neuron1.value;
     }
   }
   

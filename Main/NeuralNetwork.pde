@@ -1,3 +1,5 @@
+/* commentar los métodos con código vacío para vídeo */
+
 class NeuralNetwork{
   
   Neuron [] list_initial_layer;
