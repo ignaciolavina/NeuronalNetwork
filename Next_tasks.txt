@@ -1,0 +1,10 @@
+NEXT TASKS
+
+- Fit function
+- Link with game
+- Check optimization and flow
+
+- X10
+- Genetic algoritmh
+	- Allow new creatio with the matrix
+	
